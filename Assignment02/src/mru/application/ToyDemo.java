@@ -20,6 +20,7 @@ public class ToyDemo {
 		
 		Toy2 tt = (Toy2)t2;
 		
+		//This is the first comment from another user
 		if(toys.get(1) instanceof Toy1) {
 			Toy1 tt = (Toy1)toys.get(1);
 			System.out.println("Type Toy 1");
@@ -27,6 +28,7 @@ public class ToyDemo {
 			Toy2 tt = (Toy2)toys.get(1);
 			System.out.println("Type Toy 2");
 		}
+		
 		
 		
 		
