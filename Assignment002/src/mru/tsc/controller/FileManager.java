@@ -8,6 +8,10 @@ import java.util.ArrayList;
 
 import java.util.Scanner;
 
+import mru.tsc.model.Animal;
+import mru.tsc.model.BoardGame;
+import mru.tsc.model.Figure;
+import mru.tsc.model.Puzzle;
 import mru.tsc.model.Toy;
 
 /**
@@ -18,6 +22,9 @@ public class FileManager {
 	
 	
 	final String TOY_FILE_PATH = "res/toys.txt";
+	
+	
+	
 	
 	
 	
@@ -45,7 +52,7 @@ public class FileManager {
 				//SN, name, brand, price, available-count, age-appropriate,
 				//classification
 				Figure figure = new Figure(
-						Integer.parseInt(currentToy[0]),
+						Long.parseLong(currentToy[0]),
 						currentToy[1],
 						currentToy[2], 
 						Double.parseDouble(currentToy[3]),
@@ -58,21 +65,24 @@ public class FileManager {
 				// SN, name, brand, price, available-count, age-appropriate,
 				//material, size
 				Animal animal = new Animal(
-						Integer.parseInt(currentToy[0]), 
-						currentToy[1],currentToy[2], 
+						Long.parseLong(currentToy[0]), 
+						currentToy[1],
+						currentToy[2], 
 						Double.parseDouble(currentToy[3]),
 						Integer.parseInt(currentToy[4]), 
 						currentToy[5], 
 						currentToy[6], 
 						currentToy[7]);
+				
 				toys.add(animal);
 				break;
 			case '4','5','6':
 				// SN, name, brand, price, available-count, age-appropriate,
 				//puzzle-type.
 				Puzzle puzzle = new Puzzle(
-						Integer.parseInt(currentToy[0]),
-						currentToy[1],currentToy[2], 
+						Long.parseLong(currentToy[0]),
+						currentToy[1],
+						currentToy[2], 
 						Double.parseDouble(currentToy[3]),
 						Integer.parseInt(currentToy[4]), 
 						currentToy[5], 
@@ -81,16 +91,31 @@ public class FileManager {
 				break;
 			case '7','8','9':
 				//SN, name, brand, price, available-count, ageappropriate, # of players, designer(s).
+				
+				
+				//Split min and Max players by '-'
+				String[] players = currentToy[6].split("-");
+				int minPlayers = Integer.parseInt(players[0]);
+				int maxPlayers = Integer.parseInt(players[1]);
+				
+				//Split designers by ','
+				String[] designers = currentToy[7].split(",");
+
+				
 				BoardGame boardGames = new BoardGame(
-						Integer.parseInt(currentToy[0]),
+						Long.parseLong(currentToy[0]),
 						currentToy[1],
 						currentToy[2], 
 						Double.parseDouble(currentToy[3]),
 						Integer.parseInt(currentToy[4]), 
 						currentToy[5],
-						Integer.parseInt(currentToy[6]), 
-						currentToy[7]);
-				toys.add(boardGames);
+						minPlayers,
+						maxPlayers,
+						designers);
+				
+			
+			
+			toys.add(boardGames);
 				break;
 			
 			
@@ -113,6 +138,12 @@ public class FileManager {
 		
 		
 	}
+
+
+
+	
+	/**You must create separate properties for min and max number of players.
+**Note that the designers are delimited by ‘,’ and # of players with ‘-’.*/
 	
 	
 	

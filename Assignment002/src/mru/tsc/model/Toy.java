@@ -5,13 +5,22 @@ package mru.tsc.model;
  */
 public abstract class Toy {
 
-	private int serialNumber; // 189654231
+	private long serialNumber; // 189654231
 	private String name; //ex G.I. Joe
 	private String brand; //ex: Toy Factory
 	private double price; //ex  54.25
 	private int availableCount; // ex: 5
 	private String ageAppropriate; // ex: +3
 	
+
+	public Toy(long serialNumber, String name, String brand, double price, int availableCount, String ageAppropriate) {
+		this.serialNumber = serialNumber;
+		this.name = name;
+		this.brand = brand;
+		this.price = price;
+		this.availableCount = availableCount;
+		this.ageAppropriate = ageAppropriate;
+	}
 
 	public String getName() {
 		return name;
@@ -20,13 +29,55 @@ public abstract class Toy {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	public Toy() {
-		
+
+	public long getSerialNumber() {
+		return serialNumber;
+	}
+
+	public void setSerialNumber(long serialNumber) {
+		this.serialNumber = serialNumber;
+	}
+
+	public String getBrand() {
+		return brand;
+	}
+
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	public int getAvailableCount() {
+		return availableCount;
+	}
+
+	public void setAvailableCount(int availableCount) {
+		this.availableCount = availableCount;
+	}
+
+	public String getAgeAppropriate() {
+		return ageAppropriate;
+	}
+
+	public void setAgeAppropriate(String ageAppropriate) {
+		this.ageAppropriate = ageAppropriate;
 	}
 	
-}
+	
+	@Override
+	public String toString() {
+		return "Serial Number: " + serialNumber + ", Name: " + name + ", Brand: " + brand + ", Price: " + price
+				+ ", Available Count: " + availableCount + ", Age Appropriate: " + ageAppropriate;
+	}
 
+}
 
 
 /*Along with the functionality mentioned above, you will need the following methods in your program:
